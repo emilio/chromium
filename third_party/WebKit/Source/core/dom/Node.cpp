@@ -994,9 +994,7 @@ bool Node::canStartSelection() const {
 // eliminate all the checks since those elements will never have class names,
 // inline style, or other things that this apparently guards against.
 bool Node::isStyledElement() const {
-  return isHTMLElement() || isSVGElement() ||
-         (isElementNode() &&
-          toElement(this)->namespaceURI() == MathMLNames::mathmlNamespaceURI);
+  return isHTMLElement() || isSVGElement() || isMathMLElement();
 }
 
 bool Node::canParticipateInFlatTree() const {

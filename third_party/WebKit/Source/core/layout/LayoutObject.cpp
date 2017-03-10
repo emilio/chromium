@@ -74,6 +74,8 @@
 #include "core/layout/api/LayoutAPIShim.h"
 #include "core/layout/api/LayoutPartItem.h"
 #include "core/layout/ng/layout_ng_block_flow.h"
+#include "core/layout/ng/ng_block_node.h"
+#include "core/layout/ng/ng_inline_node.h"
 #include "core/page/AutoscrollController.h"
 #include "core/page/Page.h"
 #include "core/paint/ObjectPaintInvalidator.h"
@@ -1985,6 +1987,13 @@ void LayoutObject::propagateStyleToAnonymousChildren() {
 
     child->setStyle(std::move(newStyle));
   }
+}
+
+NGLayoutInputNode* LayoutObject::toNGLayoutInputNode(
+    const ComputedStyle& containingBlockStyle) {
+  if (isInline())
+    return new NGInlineNode(this, &containingBlockStyle);
+  return new NGBlockNode(this);
 }
 
 void LayoutObject::setStyleWithWritingModeOf(PassRefPtr<ComputedStyle> style,

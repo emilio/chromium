@@ -23,7 +23,7 @@ struct NGLogicalOffset;
 struct MinMaxContentSize;
 
 // Represents a node to be laid out.
-class CORE_EXPORT NGBlockNode final : public NGLayoutInputNode {
+class CORE_EXPORT NGBlockNode : public NGLayoutInputNode {
   friend NGLayoutInputNode;
 
  public:
@@ -60,11 +60,12 @@ class CORE_EXPORT NGBlockNode final : public NGLayoutInputNode {
 
   // Save static position for legacy AbsPos layout.
   void SaveStaticOffsetForLegacy(const NGLogicalOffset&);
- private:
 
+ private:
   bool CanUseNewLayout();
   bool HasInlineChildren();
 
+ protected:
   // After we run the layout algorithm, this function copies back the geometry
   // data to the layout box.
   void CopyFragmentDataToLayoutBox(const NGConstraintSpace&, NGLayoutResult*);

@@ -65,6 +65,7 @@ class LayoutFlowThread;
 class LayoutGeometryMap;
 class LayoutMultiColumnSpannerPlaceholder;
 class LayoutView;
+class NGLayoutInputNode;
 class ObjectPaintProperties;
 class PaintInvalidationState;
 class PaintLayer;
@@ -399,6 +400,9 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
   // and shall remain immutable during other phases.
   const ObjectPaintProperties* paintProperties() const;
 
+  // Create an appropriate NGLayoutInput node to represent this LayoutObject.
+  virtual NGLayoutInputNode* toNGLayoutInputNode(const ComputedStyle&);
+
  private:
   ObjectPaintProperties& ensurePaintProperties();
 
@@ -419,7 +423,6 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
   }
 
   //////////////////////////////////////////
- private:
 #if DCHECK_IS_ON()
   bool isSetNeedsLayoutForbidden() const { return m_setNeedsLayoutForbidden; }
   void setNeedsLayoutIsForbidden(bool flag) {
@@ -492,6 +495,8 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
   bool isListBox() const { return isOfType(LayoutObjectListBox); }
   bool isListItem() const { return isOfType(LayoutObjectListItem); }
   bool isListMarker() const { return isOfType(LayoutObjectListMarker); }
+  bool isMathML() const { return isOfType(LayoutObjectMathML); }
+  bool isMathMLRoot() const { return isOfType(LayoutObjectMathMLRoot); }
   bool isMedia() const { return isOfType(LayoutObjectMedia); }
   bool isMenuList() const { return isOfType(LayoutObjectMenuList); }
   bool isProgress() const { return isOfType(LayoutObjectProgress); }
@@ -1114,6 +1119,7 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
                const HitTestLocation& locationInContainer,
                const LayoutPoint& accumulatedOffset,
                HitTestFilter = HitTestAll);
+
   virtual void updateHitTestResult(HitTestResult&, const LayoutPoint&);
   virtual bool nodeAtPoint(HitTestResult&,
                            const HitTestLocation& locationInContainer,
@@ -1893,6 +1899,8 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
     LayoutObjectListBox,
     LayoutObjectListItem,
     LayoutObjectListMarker,
+    LayoutObjectMathML,
+    LayoutObjectMathMLRoot,
     LayoutObjectMedia,
     LayoutObjectMenuList,
     LayoutObjectNGBlockFlow,
@@ -1964,7 +1972,6 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
   // changes at all).
   virtual bool anonymousHasStylePropagationOverride() { return false; }
 
- protected:
   // This function is called before calling the destructor so that some clean-up
   // can happen regardless of whether they call a virtual function or not. As a
   // rule of thumb, this function should be preferred to the destructor. See

@@ -53,6 +53,7 @@ class HTMLQualifiedName;
 class HTMLSlotElement;
 class IntRect;
 class EventDispatchHandlingState;
+class MathMLQualifiedName;
 class NodeList;
 class NodeListsNodeData;
 class NodeOrString;
@@ -178,6 +179,7 @@ class CORE_EXPORT Node : public EventTarget {
   // DOM methods & attributes for Node
 
   bool hasTagName(const HTMLQualifiedName&) const;
+  bool hasTagName(const MathMLQualifiedName&) const;
   bool hasTagName(const SVGQualifiedName&) const;
   virtual String nodeName() const = 0;
   virtual String nodeValue() const;
@@ -243,6 +245,7 @@ class CORE_EXPORT Node : public EventTarget {
   bool isContainerNode() const { return getFlag(IsContainerFlag); }
   bool isTextNode() const { return getFlag(IsTextFlag); }
   bool isHTMLElement() const { return getFlag(IsHTMLFlag); }
+  bool isMathMLElement() const { return getFlag(IsMathMLFlag); }
   bool isSVGElement() const { return getFlag(IsSVGFlag); }
 
   DISABLE_CFI_PERF bool isPseudoElement() const {
@@ -783,6 +786,7 @@ class CORE_EXPORT Node : public EventTarget {
     IsContainerFlag = 1 << 2,
     IsElementFlag = 1 << 3,
     IsHTMLFlag = 1 << 4,
+    IsMathMLFlag = 1 << 28,
     IsSVGFlag = 1 << 5,
     IsDocumentFragmentFlag = 1 << 6,
     IsInsertionPointFlag = 1 << 7,
@@ -855,6 +859,7 @@ class CORE_EXPORT Node : public EventTarget {
         CreateContainer | IsDocumentFragmentFlag | IsInShadowTreeFlag,
     CreateDocumentFragment = CreateContainer | IsDocumentFragmentFlag,
     CreateHTMLElement = CreateElement | IsHTMLFlag,
+    CreateMathMLElement = CreateElement | IsMathMLFlag,
     CreateSVGElement = CreateElement | IsSVGFlag,
     CreateDocument = CreateContainer | IsConnectedFlag,
     CreateInsertionPoint = CreateHTMLElement | IsInsertionPointFlag,
