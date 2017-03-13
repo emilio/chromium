@@ -161,8 +161,7 @@ NGLayoutInputNode* NGBlockNode::NextSibling() {
   if (!next_sibling_) {
     LayoutObject* next_sibling = layout_box_->nextSibling();
     next_sibling_ =
-        next_sibling ? toNGBlockNode(next_sibling->toNGLayoutInputNode(Style()))
-                     : nullptr;
+        next_sibling ? next_sibling->toNGLayoutInputNode(Style()) : nullptr;
   }
   return next_sibling_;
 }
