@@ -11,7 +11,8 @@ namespace blink {
 MathMLElement::MathMLElement(const QualifiedName& tagName,
                              Document& document,
                              ConstructionType constructionType)
-    : Element(tagName, &document, constructionType) {}
+    : Element(tagName, &document, constructionType) {
+}
 
 MathMLElement::~MathMLElement() {}
 
