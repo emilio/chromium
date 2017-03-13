@@ -25,6 +25,9 @@ NGMathMLMathNode::Layout(NGConstraintSpace* constraint_space,
     builder.AddChild(std::move(child_fragment), NGLogicalOffset());
   }
 
+  builder.SetInlineSize(LayoutUnit(40))
+    .SetBlockSize(LayoutUnit(40));
+
   RefPtr<NGLayoutResult> result = builder.ToBoxFragment();
 
   CopyFragmentDataToLayoutBox(*constraint_space, result.get());

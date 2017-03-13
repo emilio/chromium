@@ -14,8 +14,11 @@ namespace blink {
 class LayoutObject;
 class ComputedStyle;
 
-class MathMLMSpaceElement final : public MathMLElement {
+class MathMLSpaceElement final : public MathMLElement {
 public:
+  DECLARE_NODE_FACTORY(MathMLSpaceElement);
+  explicit MathMLSpaceElement(Document&);
+
   LayoutObject* createLayoutObject(const ComputedStyle&) override;
 };
 

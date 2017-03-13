@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef NGMathMLMathNode_h
-#define NGMathMLMathNode_h
+#ifndef NGMathMLSpaceNode_h
+#define NGMathMLSpaceNode_h
 
 #include "core/layout/ng/ng_block_node.h"
 
@@ -16,9 +16,9 @@ namespace blink {
 // FIXME(emilio): This might need more care, but right now LayoutNG only does
 // Block and a simplified version of inline layout, so making it quack like a
 // block is probably ok.
-class NGMathMLMathNode final : public NGBlockNode {
+class NGMathMLSpaceNode final : public NGBlockNode {
  public:
-  explicit NGMathMLMathNode(LayoutObject* flow)
+  explicit NGMathMLSpaceNode(LayoutObject* flow)
     : NGBlockNode(flow) {}
 
   RefPtr<NGLayoutResult> Layout(NGConstraintSpace* constraint_space,

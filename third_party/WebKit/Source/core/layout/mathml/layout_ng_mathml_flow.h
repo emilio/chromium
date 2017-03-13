@@ -11,23 +11,31 @@
 
 namespace blink {
 
-class MathMLElement;
+class MathMLMathElement;
 
 class LayoutNGMathMLFlow final : public LayoutReplaced {
  public:
-  explicit LayoutNGMathMLFlow(MathMLElement*);
+  explicit LayoutNGMathMLFlow(MathMLMathElement*);
   ~LayoutNGMathMLFlow() override = default;
 
-  const char* name() const final {
-    return "LayoutNGMathMLFlow";
-  }
-
-  void computeIntrinsicSizingInfo(IntrinsicSizingInfo&) const override;
-
-  NGMathMLMathNode* toNGLayoutInputNode(const ComputedStyle&) override;
+  const char* name() const final { return "LayoutNGMathMLFlow"; }
 
  private:
+  NGMathMLMathNode* toNGLayoutInputNode(const ComputedStyle&) override;
+  void computeIntrinsicSizingInfo(IntrinsicSizingInfo&) const override;
+  void layout() override;
+
+
+  bool canHaveChildren() const override { return true; }
+  const LayoutObjectChildList* children() const { return &m_children; }
+  LayoutObjectChildList* children() { return &m_children; }
+  LayoutObjectChildList* virtualChildren() override { return children(); }
+  const LayoutObjectChildList* virtualChildren() const override { return children(); }
+  bool isChildAllowed(LayoutObject*, const ComputedStyle&) const override;
+
   bool isOfType(LayoutObjectType) const override;
+
+  LayoutObjectChildList m_children;
 };
 
 DEFINE_LAYOUT_OBJECT_TYPE_CASTS(LayoutNGMathMLFlow, isMathMLMath());

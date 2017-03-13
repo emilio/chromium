@@ -13,6 +13,10 @@
       interfaceName: "MathMLMathElement",
     },
     {
+      name: "mspace",
+      interfaceName: "MathMLSpaceElement",
+    },
+    {
       name: "mi",
       interfaceName: "MathMLElement",
     },

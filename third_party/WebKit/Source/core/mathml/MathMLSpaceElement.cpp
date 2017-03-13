@@ -4,9 +4,15 @@
  * found in the LICENSE file.
  */
 
-#include "core/layout/mathml/layout_ng_mathml_mspace_flow.h"
+#include "core/layout/mathml/layout_ng_mathml_space_flow.h"
+#include "core/mathml/MathMLSpaceElement.h"
 
 namespace blink {
+
+MathMLSpaceElement::MathMLSpaceElement(Document& doc)
+  : MathMLElement(MathMLNames::mspaceTag, doc) {}
+
+DEFINE_NODE_FACTORY(MathMLSpaceElement)
 
 /*
  * TODO(emilio): We could consider writing our custom paint code for MathML
@@ -14,8 +20,8 @@ namespace blink {
  *
  * But meanwhile...
  */
-LayoutObject* MathMLMSpaceElement::createLayoutObject(const ComputedStyle&) {
-  return new LayoutNGMathMLMSpace(this);
+LayoutObject* MathMLSpaceElement::createLayoutObject(const ComputedStyle&) {
+  return new LayoutNGMathMLSpaceFlow(this);
 }
 
 }  // namespace blink
