@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "ng_mathml_root_node.h"
+#include "ng_mathml_math_node.h"
 #include "core/layout/ng/ng_fragment_builder.h"
 
 namespace blink {
 
 RefPtr<NGLayoutResult>
-NGMathMLRootNode::Layout(NGConstraintSpace* constraint_space,
+NGMathMLMathNode::Layout(NGConstraintSpace* constraint_space,
                          NGBreakToken* break_token) {
   NGFragmentBuilder builder(NGPhysicalFragment::kFragmentBox,
                             this);

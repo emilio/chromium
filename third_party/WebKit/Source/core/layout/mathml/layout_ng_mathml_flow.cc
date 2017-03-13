@@ -8,13 +8,13 @@ LayoutNGMathMLFlow::LayoutNGMathMLFlow(MathMLElement* element)
 }
 
 bool LayoutNGMathMLFlow::isOfType(LayoutObjectType type) const {
-  return type == LayoutObjectMathMLRoot || type == LayoutObjectMathML ||
+  return type == LayoutObjectMathMLMath || type == LayoutObjectMathML ||
          LayoutReplaced::isOfType(type);
 }
 
-NGMathMLRootNode* LayoutNGMathMLFlow::toNGLayoutInputNode(
+NGMathMLMathNode* LayoutNGMathMLFlow::toNGLayoutInputNode(
     const ComputedStyle& style) {
-  return new NGMathMLRootNode(this);
+  return new NGMathMLMathNode(this);
 
 }
 

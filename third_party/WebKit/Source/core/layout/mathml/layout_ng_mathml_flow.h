@@ -7,7 +7,7 @@
 
 #include "core/layout/LayoutReplaced.h"
 #include "core/mathml/MathMLElement.h"
-#include "ng_mathml_root_node.h"
+#include "ng_mathml_math_node.h"
 
 namespace blink {
 
@@ -24,13 +24,13 @@ class LayoutNGMathMLFlow final : public LayoutReplaced {
 
   void computeIntrinsicSizingInfo(IntrinsicSizingInfo&) const override;
 
-  NGMathMLRootNode* toNGLayoutInputNode(const ComputedStyle&) override;
+  NGMathMLMathNode* toNGLayoutInputNode(const ComputedStyle&) override;
 
  private:
   bool isOfType(LayoutObjectType) const override;
 };
 
-DEFINE_LAYOUT_OBJECT_TYPE_CASTS(LayoutNGMathMLFlow, isMathMLRoot());
+DEFINE_LAYOUT_OBJECT_TYPE_CASTS(LayoutNGMathMLFlow, isMathMLMath());
 
 }  // namespace blink
 
