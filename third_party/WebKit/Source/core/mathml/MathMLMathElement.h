@@ -5,6 +5,7 @@
 
 namespace blink {
 
+class ComputedStyle;
 class Document;
 
 class CORE_EXPORT MathMLMathElement final : public MathMLElement {

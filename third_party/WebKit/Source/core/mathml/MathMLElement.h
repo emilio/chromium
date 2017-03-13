@@ -13,8 +13,6 @@
 
 namespace blink {
 
-class ComputedStyle;
-
 class CORE_EXPORT MathMLElement : public Element {
   // DEFINE_WRAPPERTYPEINFO();
 
