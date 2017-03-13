@@ -3,53 +3,45 @@
     namespace: "MathML",
     namespaceURI: "http://www.w3.org/1998/Math/MathML",
     fallbackInterfaceName: "MathMLUnknownElement",
-    fallbackJSInterfaceName: "Element", // XXX Should the DOM expose MathMLElement?
+    // Mathml 3 doesn't expose mathml subclasses, only the generic Element.
+    fallbackJSInterfaceName: "Element",
     export: "CORE_EXPORT",
   },
   data: [
     {
       name: "math",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "mi",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "mn",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "mo",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "mtext",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "ms",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "mglyph",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "malignmark",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
     {
       name: "annotation-xml",
-      JSInterfaceName: "Element",
       interfaceName: "MathMLElement",
     },
   ]
