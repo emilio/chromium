@@ -423,6 +423,7 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
   }
 
   //////////////////////////////////////////
+ private:
 #if DCHECK_IS_ON()
   bool isSetNeedsLayoutForbidden() const { return m_setNeedsLayoutForbidden; }
   void setNeedsLayoutIsForbidden(bool flag) {
@@ -1119,7 +1120,6 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
                const HitTestLocation& locationInContainer,
                const LayoutPoint& accumulatedOffset,
                HitTestFilter = HitTestAll);
-
   virtual void updateHitTestResult(HitTestResult&, const LayoutPoint&);
   virtual bool nodeAtPoint(HitTestResult&,
                            const HitTestLocation& locationInContainer,
@@ -1972,6 +1972,7 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
   // changes at all).
   virtual bool anonymousHasStylePropagationOverride() { return false; }
 
+ protected:
   // This function is called before calling the destructor so that some clean-up
   // can happen regardless of whether they call a virtual function or not. As a
   // rule of thumb, this function should be preferred to the destructor. See
