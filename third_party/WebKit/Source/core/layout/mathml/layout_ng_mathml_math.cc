@@ -1,3 +1,7 @@
+// Copyright 2017 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 #include "core/layout/mathml/layout_ng_mathml_math.h"
 #include "core/layout/LayoutAnalyzer.h"
 #include "core/layout/ng/ng_constraint_space.h"
