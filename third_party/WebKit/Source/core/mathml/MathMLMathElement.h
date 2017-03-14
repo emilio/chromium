@@ -15,7 +15,6 @@ class CORE_EXPORT MathMLMathElement final : public MathMLElement {
 
   LayoutObject* createLayoutObject(const ComputedStyle&) override;
 };
-
 }
 
 #endif

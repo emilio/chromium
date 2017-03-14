@@ -7,9 +7,9 @@
 #ifndef MathMLElement_h
 #define MathMLElement_h
 
-#include "core/dom/Element.h"
 #include "core/CoreExport.h"
 #include "core/MathMLNames.h"
+#include "core/dom/Element.h"
 
 namespace blink {
 

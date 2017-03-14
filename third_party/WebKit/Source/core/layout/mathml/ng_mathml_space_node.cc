@@ -7,16 +7,14 @@
 
 namespace blink {
 
-RefPtr<NGLayoutResult>
-NGMathMLSpaceNode::Layout(NGConstraintSpace* constraint_space,
-                         NGBreakToken* break_token) {
-  NGFragmentBuilder builder(NGPhysicalFragment::kFragmentBox,
-                            this);
-
+RefPtr<NGLayoutResult> NGMathMLSpaceNode::Layout(
+    NGConstraintSpace* constraint_space,
+    NGBreakToken* break_token) {
+  NGFragmentBuilder builder(NGPhysicalFragment::kFragmentBox, this);
 
   RefPtr<NGLayoutResult> result = builder.SetBlockSize(LayoutUnit(20))
-      .SetInlineSize(LayoutUnit(20))
-      .ToBoxFragment();
+                                      .SetInlineSize(LayoutUnit(20))
+                                      .ToBoxFragment();
 
   CopyFragmentDataToLayoutBox(*constraint_space, result.get());
 

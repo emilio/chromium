@@ -3,24 +3,22 @@
 // found in the LICENSE file.
 
 #include "core/layout/mathml/layout_ng_mathml_block.h"
-#include "core/layout/ng/ng_constraint_space.h"
+#include "core/layout/LayoutAnalyzer.h"
 #include "core/layout/ng/ng_block_layout_algorithm.h"
 #include "core/layout/ng/ng_block_node.h"
-#include "core/layout/LayoutAnalyzer.h"
+#include "core/layout/ng/ng_constraint_space.h"
 
 namespace blink {
 
 LayoutNGMathMLBlock::LayoutNGMathMLBlock(MathMLElement* element)
-  : LayoutBlock(element) {
+    : LayoutBlock(element) {
   DCHECK(element);
 }
 
 bool LayoutNGMathMLBlock::isOfType(LayoutObjectType type) const {
-  return type == LayoutObjectMathML ||
-    type == LayoutObjectMathMLBlock ||
-    LayoutBlock::isOfType(type);
+  return type == LayoutObjectMathML || type == LayoutObjectMathMLBlock ||
+         LayoutBlock::isOfType(type);
 }
-
 
 bool LayoutNGMathMLBlock::isChildAllowed(LayoutObject* child,
                                          const ComputedStyle&) const {

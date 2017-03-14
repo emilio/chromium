@@ -4,12 +4,12 @@
 namespace blink {
 
 LayoutNGMathMLSpace::LayoutNGMathMLSpace(MathMLSpaceElement* element)
-  : LayoutNGMathMLBlock(element) {
+    : LayoutNGMathMLBlock(element) {
   DCHECK(element);
 }
 
 void LayoutNGMathMLSpace::layoutBlock(bool relayoutChildren) {
-  ASSERT_NOT_REACHED(); // Should use LayoutNG instead
+  ASSERT_NOT_REACHED();  // Should use LayoutNG instead
   clearNeedsLayout();
 }
 

@@ -18,8 +18,7 @@ namespace blink {
 // block is probably ok.
 class NGMathMLSpaceNode final : public NGMathMLInputNode {
  public:
-  explicit NGMathMLSpaceNode(LayoutObject* flow)
-    : NGMathMLInputNode(flow) {}
+  explicit NGMathMLSpaceNode(LayoutObject* flow) : NGMathMLInputNode(flow) {}
 
   RefPtr<NGLayoutResult> Layout(NGConstraintSpace* constraint_space,
                                 NGBreakToken* break_token) final;

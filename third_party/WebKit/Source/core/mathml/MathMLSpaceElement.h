@@ -15,7 +15,7 @@ class LayoutObject;
 class ComputedStyle;
 
 class MathMLSpaceElement final : public MathMLElement {
-public:
+ public:
   DECLARE_NODE_FACTORY(MathMLSpaceElement);
   explicit MathMLSpaceElement(Document&);
 

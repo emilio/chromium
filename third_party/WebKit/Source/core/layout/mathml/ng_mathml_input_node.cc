@@ -6,10 +6,10 @@
 
 namespace blink {
 
-RefPtr<NGLayoutResult>
-NGMathMLInputNode::Layout(NGConstraintSpace* constraint_space,
-                          NGBreakToken* break_token) {
-  ASSERT_NOT_REACHED(); // Should be subclassed.
+RefPtr<NGLayoutResult> NGMathMLInputNode::Layout(
+    NGConstraintSpace* constraint_space,
+    NGBreakToken* break_token) {
+  ASSERT_NOT_REACHED();  // Should be subclassed.
   return nullptr;
 }
 

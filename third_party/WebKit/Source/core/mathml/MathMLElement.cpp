@@ -11,11 +11,10 @@ namespace blink {
 MathMLElement::MathMLElement(const QualifiedName& tagName,
                              Document& document,
                              ConstructionType constructionType)
-    : Element(tagName, &document, constructionType) {
-}
+    : Element(tagName, &document, constructionType) {}
 
 MathMLElement::~MathMLElement() {}
 
 DEFINE_ELEMENT_FACTORY_WITH_TAGNAME(MathMLElement)
 
-} // namespace blink
+}  // namespace blink

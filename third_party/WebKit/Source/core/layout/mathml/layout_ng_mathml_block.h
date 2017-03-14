@@ -19,15 +19,15 @@ class LayoutNGMathMLBlock : public LayoutBlock {
   ~LayoutNGMathMLBlock() override = default;
 
   const char* name() const override {
-    ASSERT_NOT_REACHED(); // Should be subclassed.
+    ASSERT_NOT_REACHED();  // Should be subclassed.
     return "LayoutNGMathMLBlock";
   }
 
   bool isChildAllowed(LayoutObject*, const ComputedStyle&) const override;
   bool isOfType(LayoutObjectType) const override;
+
  private:
   void layoutBlock(bool) override;
-
 };
 
 DEFINE_LAYOUT_OBJECT_TYPE_CASTS(LayoutNGMathMLBlock, isMathMLBlock());

@@ -10,12 +10,12 @@
 namespace blink {
 
 MathMLMathElement::MathMLMathElement(Document& doc)
-  : MathMLElement(MathMLNames::mathTag, doc) {
-}
+    : MathMLElement(MathMLNames::mathTag, doc) {}
 
 DEFINE_NODE_FACTORY(MathMLMathElement)
 
-LayoutObject* MathMLMathElement::createLayoutObject(const ComputedStyle& style) {
+LayoutObject* MathMLMathElement::createLayoutObject(
+    const ComputedStyle& style) {
   return new LayoutNGMathMLMath(this);
 }
 

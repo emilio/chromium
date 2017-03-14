@@ -10,7 +10,7 @@ namespace blink {
 
 MathMLUnknownElement::MathMLUnknownElement(const QualifiedName& tagName,
                                            Document& document)
- : MathMLElement(tagName, document) {}
+    : MathMLElement(tagName, document) {}
 
 DEFINE_ELEMENT_FACTORY_WITH_TAGNAME(MathMLUnknownElement);
 
