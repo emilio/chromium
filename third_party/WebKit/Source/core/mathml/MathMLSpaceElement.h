@@ -7,6 +7,7 @@
 #ifndef MathMLMSpaceElement_h
 #define MathMLMSpaceElement_h
 
+#include "core/MathMLNames.h"
 #include "core/mathml/MathMLElement.h"
 
 namespace blink {
@@ -17,9 +18,27 @@ class ComputedStyle;
 class MathMLSpaceElement final : public MathMLElement {
  public:
   DECLARE_NODE_FACTORY(MathMLSpaceElement);
+
+  const Length& width() {
+    return cachedMathMLLength(MathMLNames::widthAttr, m_width);
+  }
+  const Length& height() {
+    return cachedMathMLLength(MathMLNames::heightAttr, m_height);
+  }
+  const Length& depth() {
+    return cachedMathMLLength(MathMLNames::depthAttr, m_depth);
+  }
+
+ protected:
   explicit MathMLSpaceElement(Document&);
 
+ private:
   LayoutObject* createLayoutObject(const ComputedStyle&) override;
+  virtual void parseAttribute(const AttributeModificationParams&);
+
+  Length m_width;
+  Length m_height;
+  Length m_depth;
 };
 
 }  // namespace blink
