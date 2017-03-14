@@ -7,6 +7,7 @@
 
 #include "core/layout/LayoutBlock.h"
 #include "core/layout/mathml/ng_mathml_space_node.h"
+#include "core/layout/mathml/layout_ng_mathml_block.h"
 
 namespace blink {
 
@@ -14,7 +15,7 @@ class MathMLSpaceElement;
 
 // TODO(emilio): Is LayoutBlock the right thing to inherit from? Probably ok for
 // a quick test.
-class LayoutNGMathMLSpace final : public LayoutBlock {
+class LayoutNGMathMLSpace final : public LayoutNGMathMLBlock {
  public:
   explicit LayoutNGMathMLSpace(MathMLSpaceElement*);
   ~LayoutNGMathMLSpace() override = default;

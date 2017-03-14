@@ -4,7 +4,7 @@
 namespace blink {
 
 LayoutNGMathMLSpace::LayoutNGMathMLSpace(MathMLSpaceElement* element)
-  : LayoutBlock(element) {
+  : LayoutNGMathMLBlock(element) {
   DCHECK(element);
 }
 
@@ -14,7 +14,7 @@ void LayoutNGMathMLSpace::layoutBlock(bool relayoutChildren) {
 }
 
 bool LayoutNGMathMLSpace::isOfType(LayoutObjectType type) const {
-  return type == LayoutObjectMathML || LayoutBlock::isOfType(type);
+  return type == LayoutObjectMathML || LayoutNGMathMLBlock::isOfType(type);
 }
 
 NGMathMLSpaceNode* LayoutNGMathMLSpace::toNGLayoutInputNode(

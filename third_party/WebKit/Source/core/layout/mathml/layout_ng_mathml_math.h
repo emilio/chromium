@@ -8,12 +8,13 @@
 #include "core/layout/LayoutReplaced.h"
 #include "core/mathml/MathMLElement.h"
 #include "ng_mathml_math_node.h"
+#include "layout_ng_mathml_block.h"
 
 namespace blink {
 
 class MathMLMathElement;
 
-class LayoutNGMathMLMath final : public LayoutReplaced {
+class LayoutNGMathMLMath final : public LayoutNGMathMLBlock {
  public:
   explicit LayoutNGMathMLMath(MathMLMathElement*);
   ~LayoutNGMathMLMath() override = default;
@@ -22,18 +23,6 @@ class LayoutNGMathMLMath final : public LayoutReplaced {
 
  private:
   NGMathMLMathNode* toNGLayoutInputNode(const ComputedStyle&) override;
-  void computeIntrinsicSizingInfo(IntrinsicSizingInfo&) const override;
-  void layout() override;
-  void paintReplaced(const PaintInfo&, const LayoutPoint&) const override;
-
-
-  bool canHaveChildren() const override { return true; }
-  const LayoutObjectChildList* children() const { return &m_children; }
-  LayoutObjectChildList* children() { return &m_children; }
-  LayoutObjectChildList* virtualChildren() override { return children(); }
-  const LayoutObjectChildList* virtualChildren() const override { return children(); }
-  bool isChildAllowed(LayoutObject*, const ComputedStyle&) const override;
-
   bool isOfType(LayoutObjectType) const override;
 
   LayoutObjectChildList m_children;
