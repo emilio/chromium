@@ -3,7 +3,7 @@
     namespace: "MathML",
     namespaceURI: "http://www.w3.org/1998/Math/MathML",
     fallbackInterfaceName: "MathMLUnknownElement",
-    // Mathml 3 doesn't expose mathml subclasses, only the generic Element.
+    // MathML 3 doesn't expose MathML subclasses, only the generic Element.
     fallbackJSInterfaceName: "Element",
     export: "CORE_EXPORT",
   },

@@ -13,8 +13,6 @@ namespace blink {
 
 class MathMLSpaceElement;
 
-// TODO(emilio): Is LayoutBlock the right thing to inherit from? Probably ok for
-// a quick test.
 class LayoutNGMathMLSpace final : public LayoutNGMathMLBlock {
  public:
   explicit LayoutNGMathMLSpace(MathMLSpaceElement*);
