@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef LayoutNGMathMLSpaceFlow_h
-#define LayoutNGMathMLSpaceFlow_h
+#ifndef LayoutNGMathMLSpace_h
+#define LayoutNGMathMLSpace_h
 
 #include "core/layout/LayoutBlock.h"
 #include "core/layout/mathml/ng_mathml_space_node.h"
@@ -14,19 +14,17 @@ class MathMLSpaceElement;
 
 // TODO(emilio): Is LayoutBlock the right thing to inherit from? Probably ok for
 // a quick test.
-//
-// Also the "Flow" name may very well be misleading.
-class LayoutNGMathMLSpaceFlow final : public LayoutBlock {
+class LayoutNGMathMLSpace final : public LayoutBlock {
  public:
-  explicit LayoutNGMathMLSpaceFlow(MathMLSpaceElement*);
-  ~LayoutNGMathMLSpaceFlow() override = default;
+  explicit LayoutNGMathMLSpace(MathMLSpaceElement*);
+  ~LayoutNGMathMLSpace() override = default;
   bool isOfType(LayoutObjectType) const override;
   void layoutBlock(bool relayoutChildren) override;
-  const char* name() const override { return "LayoutNGMathMLSpaceFlow"; }
+  const char* name() const override { return "LayoutNGMathMLSpace"; }
 
   NGMathMLSpaceNode* toNGLayoutInputNode(const ComputedStyle&) override;
 };
 
 }
 
-#endif  // LayoutNGMathMLSpaceFlow_h
+#endif  // LayoutNGMathMLSpace_h

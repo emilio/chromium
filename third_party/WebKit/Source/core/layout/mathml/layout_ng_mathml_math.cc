@@ -1,32 +1,32 @@
 #include "core/layout/LayoutAnalyzer.h"
-#include "core/layout/mathml/layout_ng_mathml_flow.h"
+#include "core/layout/mathml/layout_ng_mathml_math.h"
 #include "core/layout/ng/ng_constraint_space.h"
 #include "core/mathml/MathMLMathElement.h"
 
 namespace blink {
 
-LayoutNGMathMLFlow::LayoutNGMathMLFlow(MathMLMathElement* element)
+LayoutNGMathMLMath::LayoutNGMathMLMath(MathMLMathElement* element)
   : LayoutReplaced(element) {
   DCHECK(element);
 }
 
-bool LayoutNGMathMLFlow::isOfType(LayoutObjectType type) const {
+bool LayoutNGMathMLMath::isOfType(LayoutObjectType type) const {
   return type == LayoutObjectMathMLMath || type == LayoutObjectMathML ||
          LayoutReplaced::isOfType(type);
 }
 
-NGMathMLMathNode* LayoutNGMathMLFlow::toNGLayoutInputNode(
+NGMathMLMathNode* LayoutNGMathMLMath::toNGLayoutInputNode(
     const ComputedStyle& style) {
   return new NGMathMLMathNode(this);
 
 }
 
-bool LayoutNGMathMLFlow::isChildAllowed(LayoutObject* child,
+bool LayoutNGMathMLMath::isChildAllowed(LayoutObject* child,
                                         const ComputedStyle&) const {
   return child->isMathML();
 }
 
-void LayoutNGMathMLFlow::layout() {
+void LayoutNGMathMLMath::layout() {
   ASSERT(needsLayout());
   LayoutAnalyzer::Scope analyzer(*this);
 
@@ -41,7 +41,7 @@ void LayoutNGMathMLFlow::layout() {
   clearNeedsLayout();
 }
 
-void LayoutNGMathMLFlow::computeIntrinsicSizingInfo(
+void LayoutNGMathMLMath::computeIntrinsicSizingInfo(
     IntrinsicSizingInfo& info) const {
   // TODO(emilio).
   info.hasWidth = true;

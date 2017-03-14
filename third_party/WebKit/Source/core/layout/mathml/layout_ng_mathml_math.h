@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef LayoutNGMathMLFlow_h
-#define LayoutNGMathMLFlow_h
+#ifndef LayoutNGMathMLMath_h
+#define LayoutNGMathMLMath_h
 
 #include "core/layout/LayoutReplaced.h"
 #include "core/mathml/MathMLElement.h"
@@ -13,12 +13,12 @@ namespace blink {
 
 class MathMLMathElement;
 
-class LayoutNGMathMLFlow final : public LayoutReplaced {
+class LayoutNGMathMLMath final : public LayoutReplaced {
  public:
-  explicit LayoutNGMathMLFlow(MathMLMathElement*);
-  ~LayoutNGMathMLFlow() override = default;
+  explicit LayoutNGMathMLMath(MathMLMathElement*);
+  ~LayoutNGMathMLMath() override = default;
 
-  const char* name() const final { return "LayoutNGMathMLFlow"; }
+  const char* name() const final { return "LayoutNGMathMLMath"; }
 
  private:
   NGMathMLMathNode* toNGLayoutInputNode(const ComputedStyle&) override;
@@ -38,8 +38,8 @@ class LayoutNGMathMLFlow final : public LayoutReplaced {
   LayoutObjectChildList m_children;
 };
 
-DEFINE_LAYOUT_OBJECT_TYPE_CASTS(LayoutNGMathMLFlow, isMathMLMath());
+DEFINE_LAYOUT_OBJECT_TYPE_CASTS(LayoutNGMathMLMath, isMathMLMath());
 
 }  // namespace blink
 
-#endif  // LayoutNGMathMLFlow_h
+#endif  // LayoutNGMathMLMath_h

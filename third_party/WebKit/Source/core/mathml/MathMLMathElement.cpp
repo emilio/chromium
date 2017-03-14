@@ -5,7 +5,7 @@
  */
 
 #include "core/mathml/MathMLMathElement.h"
-#include "core/layout/mathml/layout_ng_mathml_flow.h"
+#include "core/layout/mathml/layout_ng_mathml_math.h"
 
 namespace blink {
 
@@ -16,7 +16,7 @@ MathMLMathElement::MathMLMathElement(Document& doc)
 DEFINE_NODE_FACTORY(MathMLMathElement)
 
 LayoutObject* MathMLMathElement::createLayoutObject(const ComputedStyle& style) {
-  return new LayoutNGMathMLFlow(this);
+  return new LayoutNGMathMLMath(this);
 }
 
 }  // namespace blink
