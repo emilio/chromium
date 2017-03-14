@@ -4,6 +4,7 @@
 
 #include "core/layout/mathml/layout_ng_mathml_block.h"
 
+#include "core/css/CSSHelper.h"
 #include "core/layout/LayoutAnalyzer.h"
 #include "core/layout/ng/ng_block_layout_algorithm.h"
 #include "core/layout/ng/ng_block_node.h"
@@ -39,6 +40,39 @@ void LayoutNGMathMLBlock::layoutBlock(bool) {
                                                 /* break_token = */ nullptr);
 
   clearNeedsLayout();
+}
+
+LayoutUnit LayoutNGMathMLBlock::toUserUnits(
+    const MathMLElement::Length& length,
+    const LayoutUnit& referenceValue) const {
+  switch (length.type) {
+    case MathMLElement::LengthType::Cm:
+      return LayoutUnit(length.value * cssPixelsPerInch / 2.54f);
+    case MathMLElement::LengthType::Em:
+      return LayoutUnit(length.value * style()->fontSize());
+    case MathMLElement::LengthType::Ex:
+      return LayoutUnit(
+          length.value *
+          style()->font().primaryFont()->getFontMetrics().xHeight());
+    case MathMLElement::LengthType::In:
+      return LayoutUnit(length.value * cssPixelsPerInch);
+    case MathMLElement::LengthType::MathUnit:
+      return LayoutUnit(length.value * style()->fontSize() / 18);
+    case MathMLElement::LengthType::Mm:
+      return LayoutUnit(length.value * cssPixelsPerInch / 25.4f);
+    case MathMLElement::LengthType::Pc:
+      return LayoutUnit(length.value * cssPixelsPerInch / 6);
+    case MathMLElement::LengthType::Percentage:
+      return LayoutUnit(referenceValue * length.value / 100);
+    case MathMLElement::LengthType::Pt:
+      return LayoutUnit(length.value * cssPixelsPerInch / 72);
+    case MathMLElement::LengthType::Px:
+      return LayoutUnit(length.value);
+    case MathMLElement::LengthType::UnitLess:
+      return LayoutUnit(referenceValue * length.value);
+    case MathMLElement::LengthType::ParsingFailed:
+      return referenceValue;
+  }
 }
 
 }  // namespace blink

@@ -25,10 +25,35 @@ class CORE_EXPORT MathMLElement : public Element {
     return hasLocalName(name.localName());
   }
 
+  // MathML lengths (https://www.w3.org/TR/MathML3/chapter2.html#fund.units)
+  // TeX's Math Unit is used internally for named spaces (1 mu = 1/18 em).
+  // Unitless values are intepreted as a multiple of a reference value.
+  enum class LengthType {
+    Cm,
+    Em,
+    Ex,
+    In,
+    MathUnit,
+    Mm,
+    ParsingFailed,
+    Pc,
+    Percentage,
+    Pt,
+    Px,
+    UnitLess
+  };
+  struct Length {
+    LengthType type = LengthType::ParsingFailed;
+    float value = 0;
+    bool dirty = true;
+  };
+  static Length parseMathMLLength(const String&);
+
  protected:
   MathMLElement(const QualifiedName& tagName,
                 Document& document,
                 ConstructionType constructionType = CreateMathMLElement);
+  const Length& cachedMathMLLength(const QualifiedName&, Length&);
 
  private:
   bool isMathMLElement() const =
