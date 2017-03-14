@@ -183,6 +183,7 @@ component("core") {
     "//third_party/WebKit/Source/core/input",
     "//third_party/WebKit/Source/core/inspector",
     "//third_party/WebKit/Source/core/layout",
+    "//third_party/WebKit/Source/core/layout/mathml",
     "//third_party/WebKit/Source/core/layout/svg",
     "//third_party/WebKit/Source/core/loader",
     "//third_party/WebKit/Source/core/mathml",
