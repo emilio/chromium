@@ -5,9 +5,10 @@
 #ifndef LayoutNGMathMLSpace_h
 #define LayoutNGMathMLSpace_h
 
+#include "core/layout/mathml/ng_mathml_space_node.h"
+
 #include "core/layout/LayoutBlock.h"
 #include "core/layout/mathml/layout_ng_mathml_block.h"
-#include "core/layout/mathml/ng_mathml_space_node.h"
 
 namespace blink {
 

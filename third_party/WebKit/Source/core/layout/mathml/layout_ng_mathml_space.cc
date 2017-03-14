@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "layout_ng_mathml_space.h"
+
 #include "core/mathml/MathMLSpaceElement.h"
 
 namespace blink {

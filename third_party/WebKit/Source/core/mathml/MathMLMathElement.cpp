@@ -5,6 +5,7 @@
  */
 
 #include "core/mathml/MathMLMathElement.h"
+
 #include "core/layout/mathml/layout_ng_mathml_math.h"
 
 namespace blink {

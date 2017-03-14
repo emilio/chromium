@@ -5,9 +5,10 @@
 #ifndef LayoutNGMathMLMath_h
 #define LayoutNGMathMLMath_h
 
+#include "layout_ng_mathml_block.h"
+
 #include "core/layout/LayoutReplaced.h"
 #include "core/mathml/MathMLElement.h"
-#include "layout_ng_mathml_block.h"
 #include "ng_mathml_math_node.h"
 
 namespace blink {

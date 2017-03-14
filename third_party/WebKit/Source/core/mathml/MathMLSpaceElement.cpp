@@ -7,6 +7,8 @@
 #include "core/mathml/MathMLSpaceElement.h"
 #include "core/layout/mathml/layout_ng_mathml_space.h"
 
+#include "core/layout/mathml/layout_ng_mathml_space.h"
+
 namespace blink {
 
 MathMLSpaceElement::MathMLSpaceElement(Document& doc)

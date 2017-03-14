@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "core/layout/mathml/layout_ng_mathml_math.h"
+
 #include "core/layout/LayoutAnalyzer.h"
 #include "core/layout/ng/ng_constraint_space.h"
 #include "core/mathml/MathMLMathElement.h"

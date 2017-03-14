@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "core/layout/mathml/ng_mathml_space_node.h"
+
 #include "core/layout/ng/ng_fragment_builder.h"
 
 namespace blink {
