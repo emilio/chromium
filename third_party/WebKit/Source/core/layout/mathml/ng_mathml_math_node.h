@@ -5,7 +5,7 @@
 #ifndef NGMathMLMathNode_h
 #define NGMathMLMathNode_h
 
-#include "core/layout/ng/ng_block_node.h"
+#include "core/layout/mathml/ng_mathml_input_node.h"
 
 namespace blink {
 
@@ -16,10 +16,10 @@ namespace blink {
 // FIXME(emilio): This might need more care, but right now LayoutNG only does
 // Block and a simplified version of inline layout, so making it quack like a
 // block is probably ok.
-class NGMathMLMathNode final : public NGBlockNode {
+class NGMathMLMathNode final : public NGMathMLInputNode {
  public:
   explicit NGMathMLMathNode(LayoutObject* flow)
-    : NGBlockNode(flow) {}
+    : NGMathMLInputNode(flow) {}
 
   RefPtr<NGLayoutResult> Layout(NGConstraintSpace* constraint_space,
                                 NGBreakToken* break_token) final;

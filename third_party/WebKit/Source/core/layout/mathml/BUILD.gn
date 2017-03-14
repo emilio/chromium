@@ -12,6 +12,8 @@ blink_core_sources("mathml") {
     "layout_ng_mathml_math.h",
     "layout_ng_mathml_space.cc",
     "layout_ng_mathml_space.h",
+    "ng_mathml_input_node.cc",
+    "ng_mathml_input_node.h",
     "ng_mathml_math_node.cc",
     "ng_mathml_math_node.h",
     "ng_mathml_space_node.cc",
