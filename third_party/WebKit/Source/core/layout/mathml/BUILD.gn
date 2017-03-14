@@ -6,8 +6,8 @@ import("//third_party/WebKit/Source/core/core.gni")
 
 blink_core_sources("mathml") {
   sources = [
-    "layout_ng_mathml_block.h",
     "layout_ng_mathml_block.cc",
+    "layout_ng_mathml_block.h",
     "layout_ng_mathml_math.cc",
     "layout_ng_mathml_math.h",
     "layout_ng_mathml_space.cc",

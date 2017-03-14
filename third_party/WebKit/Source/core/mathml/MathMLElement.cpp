@@ -4,8 +4,8 @@
  * found in the LICENSE file.
  */
 
-#include "core/html/parser/HTMLParserIdioms.h"
 #include "core/mathml/MathMLElement.h"
+#include "core/html/parser/HTMLParserIdioms.h"
 
 namespace blink {
 
@@ -123,4 +123,4 @@ const MathMLElement::Length& MathMLElement::cachedMathMLLength(
   return length;
 }
 
-} // namespace blink
+}  // namespace blink

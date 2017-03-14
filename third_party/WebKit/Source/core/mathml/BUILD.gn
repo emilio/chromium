@@ -6,13 +6,13 @@ import("//third_party/WebKit/Source/core/core.gni")
 
 blink_core_sources("mathml") {
   sources = [
-    "MathMLElement.h",
     "MathMLElement.cpp",
-    "MathMLUnknownElement.h",
-    "MathMLUnknownElement.cpp",
-    "MathMLMathElement.h",
+    "MathMLElement.h",
     "MathMLMathElement.cpp",
-    "MathMLSpaceElement.h",
+    "MathMLMathElement.h",
     "MathMLSpaceElement.cpp",
+    "MathMLSpaceElement.h",
+    "MathMLUnknownElement.cpp",
+    "MathMLUnknownElement.h",
   ]
 }

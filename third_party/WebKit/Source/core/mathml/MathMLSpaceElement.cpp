@@ -17,7 +17,8 @@ MathMLSpaceElement::MathMLSpaceElement(Document& doc)
 
 DEFINE_NODE_FACTORY(MathMLSpaceElement)
 
-void MathMLSpaceElement::parseAttribute(const AttributeModificationParams& param) {
+void MathMLSpaceElement::parseAttribute(
+    const AttributeModificationParams& param) {
   if (param.name == widthAttr)
     m_width.dirty = true;
   else if (param.name == heightAttr)

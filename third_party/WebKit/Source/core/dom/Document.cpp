@@ -1240,7 +1240,8 @@ Element* Document::createElement(const QualifiedName& qName,
   else if (qName.namespaceURI() == SVGNames::svgNamespaceURI)
     e = SVGElementFactory::createSVGElement(qName.localName(), *this, flags);
   else if (qName.namespaceURI() == MathMLNames::mathmlNamespaceURI)
-    e = MathMLElementFactory::createMathMLElement(qName.localName(), *this, flags);
+    e = MathMLElementFactory::createMathMLElement(qName.localName(), *this,
+                                                  flags);
 
   if (e)
     m_sawElementsInKnownNamespaces = true;
