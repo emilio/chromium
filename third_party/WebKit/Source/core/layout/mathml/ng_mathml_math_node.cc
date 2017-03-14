@@ -4,31 +4,17 @@
 
 #include "ng_mathml_math_node.h"
 #include "core/layout/ng/ng_fragment_builder.h"
+#include "core/layout/ng/ng_block_layout_algorithm.h"
+#include "core/layout/ng/ng_block_break_token.h"
 
 namespace blink {
 
 RefPtr<NGLayoutResult>
 NGMathMLMathNode::Layout(NGConstraintSpace* constraint_space,
                          NGBreakToken* break_token) {
-  NGFragmentBuilder builder(NGPhysicalFragment::kFragmentBox,
-                            this);
-
-  for (NGLayoutInputNode* child = FirstChild(); child;
-       child = child->NextSibling()) {
-    // FIXME(emilio): Pretty sure I need to subdivide the available space
-    // somehow.
-    RefPtr<NGLayoutResult> child_fragment =
-      child->Layout(constraint_space, break_token);
-
-    // FIXME(emilio): Calculate offset! (presumably easy since we don't have to
-    // care about oof-positioned stuff?).
-    builder.AddChild(std::move(child_fragment), NGLogicalOffset());
-  }
-
-  builder.SetInlineSize(LayoutUnit(40))
-    .SetBlockSize(LayoutUnit(40));
-
-  RefPtr<NGLayoutResult> result = builder.ToBoxFragment();
+  RefPtr<NGLayoutResult> result =
+    NGBlockLayoutAlgorithm(
+        this, constraint_space, toNGBlockBreakToken(break_token)).Layout();
 
   CopyFragmentDataToLayoutBox(*constraint_space, result.get());
 

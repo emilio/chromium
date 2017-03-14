@@ -24,6 +24,7 @@ class LayoutNGMathMLMath final : public LayoutReplaced {
   NGMathMLMathNode* toNGLayoutInputNode(const ComputedStyle&) override;
   void computeIntrinsicSizingInfo(IntrinsicSizingInfo&) const override;
   void layout() override;
+  void paintReplaced(const PaintInfo&, const LayoutPoint&) const override;
 
 
   bool canHaveChildren() const override { return true; }
