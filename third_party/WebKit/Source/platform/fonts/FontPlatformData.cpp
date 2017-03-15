@@ -365,7 +365,7 @@ bool FontPlatformData::hasMathData() const {
   hb_face_t* face = hb_font_get_face(font);
   ASSERT(face);
 
-  return hbFace && hb_ot_math_has_data(face);
+  return hb_ot_math_has_data(face);
 }
 
 int32_t FontPlatformData::mathConstant(MathConstant constant) const {
