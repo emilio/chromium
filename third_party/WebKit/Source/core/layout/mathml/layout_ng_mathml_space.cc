@@ -24,7 +24,9 @@ bool LayoutNGMathMLSpace::isOfType(LayoutObjectType type) const {
 
 NGMathMLSpaceNode* LayoutNGMathMLSpace::toNGLayoutInputNode(
     const ComputedStyle& style) {
-  return new NGMathMLSpaceNode(this);
+  MathMLSpaceElement* spaceElement = toMathMLSpaceElement(node());
+  return new NGMathMLSpaceNode(this, spaceElement->width(),
+                               spaceElement->height(), spaceElement->depth());
 }
 
 }  // namespace blink

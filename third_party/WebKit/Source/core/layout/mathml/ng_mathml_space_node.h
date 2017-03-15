@@ -7,6 +7,8 @@
 
 #include "core/layout/mathml/ng_mathml_input_node.h"
 
+#include "core/mathml/MathMLElement.h"
+
 namespace blink {
 
 // Let's assume we're a block so our parent can layout us as such, but override
@@ -18,10 +20,22 @@ namespace blink {
 // block is probably ok.
 class NGMathMLSpaceNode final : public NGMathMLInputNode {
  public:
-  explicit NGMathMLSpaceNode(LayoutObject* flow) : NGMathMLInputNode(flow) {}
+  explicit NGMathMLSpaceNode(LayoutObject* flow,
+                             const MathMLElement::Length& width,
+                             const MathMLElement::Length& height,
+                             const MathMLElement::Length& depth)
+      : NGMathMLInputNode(flow),
+        m_width(width),
+        m_height(height),
+        m_depth(depth) {}
 
   RefPtr<NGLayoutResult> Layout(NGConstraintSpace* constraint_space,
                                 NGBreakToken* break_token) final;
+
+ private:
+  const MathMLElement::Length& m_width;
+  const MathMLElement::Length& m_height;
+  const MathMLElement::Length& m_depth;
 };
 
 }  // namespace blink

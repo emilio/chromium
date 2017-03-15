@@ -7,6 +7,8 @@
 
 #include "core/layout/ng/ng_block_node.h"
 
+#include "core/mathml/MathMLElement.h"
+
 namespace blink {
 
 class NGMathMLInputNode : public NGBlockNode {
@@ -15,6 +17,10 @@ class NGMathMLInputNode : public NGBlockNode {
 
   RefPtr<NGLayoutResult> Layout(NGConstraintSpace* constraint_space,
                                 NGBreakToken* break_token) override;
+
+ protected:
+  LayoutUnit toUserUnits(const MathMLElement::Length&,
+                         const LayoutUnit& referenceValue) const;
 };
 
 }  // namespace blink

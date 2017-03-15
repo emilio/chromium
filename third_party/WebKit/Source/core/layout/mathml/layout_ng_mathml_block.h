@@ -26,10 +26,6 @@ class LayoutNGMathMLBlock : public LayoutBlock {
   bool isChildAllowed(LayoutObject*, const ComputedStyle&) const override;
   bool isOfType(LayoutObjectType) const override;
 
- protected:
-  LayoutUnit toUserUnits(const MathMLElement::Length&,
-                         const LayoutUnit& referenceValue) const;
-
  private:
   void layoutBlock(bool) override;
 };

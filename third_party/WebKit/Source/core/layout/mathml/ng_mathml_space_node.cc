@@ -13,9 +13,14 @@ RefPtr<NGLayoutResult> NGMathMLSpaceNode::Layout(
     NGBreakToken* break_token) {
   NGFragmentBuilder builder(NGPhysicalFragment::kFragmentBox, this);
 
-  RefPtr<NGLayoutResult> result = builder.SetBlockSize(LayoutUnit(20))
-                                      .SetInlineSize(LayoutUnit(20))
-                                      .ToBoxFragment();
+  // FIXME: We should use height & depth to set NGFragment's alignmentBaseline.
+  LayoutUnit inlineSize = toUserUnits(m_height, LayoutUnit(0)) +
+                          toUserUnits(m_depth, LayoutUnit(0));
+
+  RefPtr<NGLayoutResult> result =
+      builder.SetBlockSize(toUserUnits(m_width, LayoutUnit(0)))
+          .SetInlineSize(inlineSize)
+          .ToBoxFragment();
 
   CopyFragmentDataToLayoutBox(*constraint_space, result.get());
 
