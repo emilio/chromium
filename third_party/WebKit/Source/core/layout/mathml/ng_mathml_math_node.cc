@@ -40,7 +40,9 @@ RefPtr<NGLayoutResult> NGMathMLMathNode::Layout(
 
   NGLogicalOffset offset(border_padding.inline_start,
                          border_padding.block_start);
-  LayoutUnit max_child_inline_size;
+  LayoutUnit max_row_inline_size;
+  LayoutUnit max_row_block_size;
+
   for (NGBlockNode* child = toNGBlockNode(FirstChild()); child;
        child = toNGBlockNode(child->NextSibling())) {
     RefPtr<NGConstraintSpace> child_constraint_space =
@@ -51,36 +53,49 @@ RefPtr<NGLayoutResult> NGMathMLMathNode::Layout(
     // be used only for fragmentation so we should be fine.
     RefPtr<NGLayoutResult> result = child->Layout(child_constraint_space.get());
 
-    // TODO(emilio): does this handle writing-mode properly? I'd say nope.
-    //
     // Also, we should account for child margins I guess?
     NGBoxFragment fragment(
         constraint_space->WritingMode(),
         toNGPhysicalBoxFragment(result->PhysicalFragment().get()));
 
     LayoutUnit child_used_block_space = fragment.BlockSize();
-    max_child_inline_size =
-        std::max(max_child_inline_size, fragment.InlineSize());
+    LayoutUnit child_used_inline_space = fragment.InlineSize();
 
     builder.AddChild(std::move(result), offset);
-    offset.block_offset += child_used_block_space;
+
+    if (child_used_inline_space >
+        available_size_for_children.inline_size &&
+        offset.inline_offset != LayoutUnit()) {
+      // Flush the line.
+      offset.inline_offset = LayoutUnit();
+      offset.block_offset += max_row_block_size;
+      available_size_for_children = NGLogicalSize(adjusted_inline_size,
+          available_size_for_children.block_size);
+      if (available_size_for_children.block_size != NGSizeIndefinite)
+        available_size_for_children.block_size -= max_row_block_size;
+      max_row_block_size = LayoutUnit();
+    } else {
+      offset.inline_offset += child_used_inline_space;
+      available_size_for_children.inline_size -= child_used_inline_space;
+    }
+
+    max_row_block_size = std::max(max_row_block_size, child_used_block_space);
+    max_row_inline_size = std::max(max_row_inline_size, offset.inline_offset);
 
     // Assume all children are block-level, so keep the inline offset to zero
     // while growing the block offset...
-    if (available_size_for_children.block_size != NGSizeIndefinite)
-      available_size_for_children.block_size -= child_used_block_space;
     child_constraints.SetAvailableSize(available_size_for_children);
   }
 
   // When we render as a block, we always take all the available inline space.
   LayoutUnit final_inline_size =
       Style().isDisplayInlineType()
-          ? max_child_inline_size + border_padding.InlineSum()
+          ? max_row_inline_size + border_padding.inline_end
           : available_size.inline_size;
 
   RefPtr<NGLayoutResult> result =
       builder.SetInlineSize(final_inline_size)
-          .SetBlockSize(offset.block_offset + border_padding.block_end)
+          .SetBlockSize(offset.block_offset + max_row_block_size + border_padding.block_end)
           .ToBoxFragment();
 
   CopyFragmentDataToLayoutBox(*constraint_space, result.get());
