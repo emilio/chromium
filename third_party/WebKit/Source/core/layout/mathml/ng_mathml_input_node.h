@@ -21,6 +21,11 @@ class NGMathMLInputNode : public NGBlockNode {
  protected:
   LayoutUnit toUserUnits(const MathMLElement::Length&,
                          const LayoutUnit& referenceValue) const;
+  LayoutUnit ruleThicknessFallback() const {
+    // This function returns a value for the default rule thickness (TeX's
+    // \xi_8) to be used as a fallback when we lack a MATH table.
+    return LayoutUnit(0.05f * Style().fontSize());
+  }
   bool hasMathData() const {
     return Style().font().primaryFont()->platformData().hasMathData();
   }

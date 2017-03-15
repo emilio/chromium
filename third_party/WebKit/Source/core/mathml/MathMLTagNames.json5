@@ -13,6 +13,10 @@
       interfaceName: "MathMLMathElement",
     },
     {
+      name: "mfrac",
+      interfaceName: "MathMLFractionElement",
+    },
+    {
       name: "mspace",
       interfaceName: "MathMLSpaceElement",
     },
