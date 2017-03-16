@@ -65,6 +65,7 @@ class LayoutFlowThread;
 class LayoutGeometryMap;
 class LayoutMultiColumnSpannerPlaceholder;
 class LayoutView;
+class NGLayoutInputNode;
 class ObjectPaintProperties;
 class PaintInvalidationState;
 class PaintLayer;
@@ -398,6 +399,9 @@ class CORE_EXPORT LayoutObject : public ImageResourceObserver,
   // nodes are only updated during InPrePaint phase of the document lifecycle
   // and shall remain immutable during other phases.
   const ObjectPaintProperties* paintProperties() const;
+
+  // Create an appropriate NGLayoutInputNode to represent this LayoutObject.
+  virtual NGLayoutInputNode* toNGLayoutInputNode(const ComputedStyle&);
 
  private:
   ObjectPaintProperties& ensurePaintProperties();
