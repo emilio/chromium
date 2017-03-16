@@ -25,12 +25,10 @@ RefPtr<NGLayoutResult> NGMathMLMathNode::Layout(
 
   LayoutUnit adjusted_inline_size =
       available_size.inline_size - border_padding.InlineSum();
-
-  LayoutUnit block_size =
-      ComputeBlockSizeForFragment(*constraint_space, Style(), NGSizeIndefinite);
-  LayoutUnit adjusted_block_size = block_size == NGSizeIndefinite
-                                       ? block_size
-                                       : block_size - border_padding.BlockSum();
+  LayoutUnit adjusted_block_size =
+    available_size.block_size == NGSizeIndefinite
+      ? available_size.block_size
+      : available_size.block_size - border_padding.BlockSum();
 
   NGLogicalSize available_size_for_children(adjusted_inline_size,
                                             adjusted_block_size);
