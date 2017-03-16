@@ -83,7 +83,25 @@ RefPtr<NGLayoutResult> NGMathMLFractionNode::Layout(
       FromPlatformWritingMode(denominator->Style().getWritingMode()),
       toNGPhysicalBoxFragment(denominator_layout_result->PhysicalFragment().get()));
 
-  LayoutUnit min_numerator_gap, min_denominator_gap; // TODO: Get from attributes.
+  // Center the numerator and denominator.
+  LayoutUnit total_inline_size = std::max(numerator_fragment.InlineSize(),
+                                          denominator_fragment.InlineSize());
+  numerator_offset.inline_offset =
+      (total_inline_size - numerator_fragment.InlineSize()) / 2;
+  denominator_offset.inline_offset =
+      (total_inline_size - denominator_fragment.InlineSize()) / 2;
+
+  // Read the gaps from the MATH table or use suggested values.
+  LayoutUnit min_numerator_gap, min_denominator_gap;
+  if (hasMathData()) {
+    min_numerator_gap = mathConstant(
+        FontPlatformData::FractionNumeratorGapMin);
+    min_denominator_gap = mathConstant(
+        FontPlatformData::FractionDenominatorGapMin);
+  } else {
+    min_numerator_gap = ruleThicknessFallback();
+    min_denominator_gap = ruleThicknessFallback();
+  }
 
   denominator_offset.block_offset =
     numerator_fragment.BlockSize() + min_numerator_gap + linethickness +
@@ -94,8 +112,6 @@ RefPtr<NGLayoutResult> NGMathMLFractionNode::Layout(
 
   LayoutUnit total_block_size =
     denominator_offset.block_offset + denominator_fragment.BlockSize();
-  LayoutUnit total_inline_size =
-    std::max(numerator_fragment.InlineSize(), denominator_fragment.InlineSize());
 
   RefPtr<NGLayoutResult> result =
       builder.SetBlockSize(total_block_size)
