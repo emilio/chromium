@@ -33,7 +33,10 @@ void LayoutNGMathMLBlock::layoutBlock(bool) {
   RefPtr<NGConstraintSpace> constraint_space =
       NGConstraintSpace::CreateFromLayoutObject(*this);
 
-  // TODO(emilio).
+  // XXX NGLayoutInputNode is GC'd, is this right?
+  Persistent<NGLayoutInputNode> input = toNGLayoutInputNode(*style());
+  RefPtr<NGLayoutResult> result = input->Layout(constraint_space.get(),
+                                                /* break_token = */ nullptr);
 
   clearNeedsLayout();
 }

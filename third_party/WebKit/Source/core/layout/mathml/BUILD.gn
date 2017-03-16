@@ -8,8 +8,12 @@ blink_core_sources("mathml") {
   sources = [
     "layout_ng_mathml_block.cc",
     "layout_ng_mathml_block.h",
+    "layout_ng_mathml_math.cc",
+    "layout_ng_mathml_math.h",
     "ng_mathml_input_node.cc",
     "ng_mathml_input_node.h",
+    "ng_mathml_math_node.cc",
+    "ng_mathml_math_node.h",
   ]
 
   configs += [

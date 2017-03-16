@@ -8,6 +8,8 @@ blink_core_sources("mathml") {
   sources = [
     "MathMLElement.cpp",
     "MathMLElement.h",
+    "MathMLMathElement.cpp",
+    "MathMLMathElement.h",
     "MathMLUnknownElement.cpp",
     "MathMLUnknownElement.h",
   ]

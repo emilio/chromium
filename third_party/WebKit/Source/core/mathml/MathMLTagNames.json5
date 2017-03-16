@@ -10,7 +10,7 @@
   data: [
     {
       name: "math",
-      interfaceName: "MathMLElement",
+      interfaceName: "MathMLMathElement",
     },
     {
       name: "mfrac",
