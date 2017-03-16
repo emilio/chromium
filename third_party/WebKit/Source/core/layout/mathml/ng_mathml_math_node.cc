@@ -85,13 +85,15 @@ RefPtr<NGLayoutResult> NGMathMLMathNode::Layout(
     child_constraints.SetAvailableSize(available_size_for_children);
   }
 
+  const bool is_block = !Style().isDisplayInlineType();
+
   // When we render as a block, we always take all the available inline space.
   LayoutUnit final_inline_size =
-      Style().isDisplayInlineType()
-          ? max_row_inline_size + border_padding.inline_end
-          : available_size.inline_size;
+    is_block ? available_size.inline_size
+             : max_row_inline_size + border_padding.inline_end;
 
-  // TODO(emilio): Center children when in block mode.
+  // TODO(emilio): Center children when in block mode, need to probably do a
+  // second pass over each row, nothing disastrous.
   RefPtr<NGLayoutResult> result =
       builder.SetInlineSize(final_inline_size)
           .SetBlockSize(offset.block_offset + max_row_block_size + border_padding.block_end)
