@@ -18,10 +18,6 @@ void LayoutNGMathMLFraction::layoutBlock(bool relayoutChildren) {
   clearNeedsLayout();
 }
 
-bool LayoutNGMathMLFraction::isOfType(LayoutObjectType type) const {
-  return type == LayoutObjectMathML || LayoutNGMathMLBlock::isOfType(type);
-}
-
 NGMathMLFractionNode* LayoutNGMathMLFraction::toNGLayoutInputNode(
     const ComputedStyle& style) {
   MathMLFractionElement* fractionElement = toMathMLFractionElement(node());

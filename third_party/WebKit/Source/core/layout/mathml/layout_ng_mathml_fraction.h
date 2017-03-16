@@ -18,7 +18,6 @@ class LayoutNGMathMLFraction final : public LayoutNGMathMLBlock {
  public:
   explicit LayoutNGMathMLFraction(MathMLFractionElement*);
   ~LayoutNGMathMLFraction() override = default;
-  bool isOfType(LayoutObjectType) const override;
   void layoutBlock(bool relayoutChildren) override;
   const char* name() const override { return "LayoutNGMathMLFraction"; }
 

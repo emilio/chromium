@@ -18,7 +18,6 @@ class LayoutNGMathMLSpace final : public LayoutNGMathMLBlock {
  public:
   explicit LayoutNGMathMLSpace(MathMLSpaceElement*);
   ~LayoutNGMathMLSpace() override = default;
-  bool isOfType(LayoutObjectType) const override;
   void layoutBlock(bool relayoutChildren) override;
   const char* name() const override { return "LayoutNGMathMLSpace"; }
 

@@ -18,10 +18,6 @@ void LayoutNGMathMLSpace::layoutBlock(bool relayoutChildren) {
   clearNeedsLayout();
 }
 
-bool LayoutNGMathMLSpace::isOfType(LayoutObjectType type) const {
-  return type == LayoutObjectMathML || LayoutNGMathMLBlock::isOfType(type);
-}
-
 NGMathMLSpaceNode* LayoutNGMathMLSpace::toNGLayoutInputNode(
     const ComputedStyle& style) {
   MathMLSpaceElement* spaceElement = toMathMLSpaceElement(node());
