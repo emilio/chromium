@@ -14,7 +14,7 @@
     },
     {
       name: "mfrac",
-      interfaceName: "MathMLElement",
+      interfaceName: "MathMLFractionElement",
     },
     {
       name: "mspace",
