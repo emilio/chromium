@@ -355,4 +355,40 @@ PassRefPtr<SharedBuffer> FontPlatformData::openTypeTable(
   return buffer.release();
 }
 
+bool FontPlatformData::hasMathData() const {
+  const HarfBuzzFace* hbFace = harfBuzzFace();
+  if (!hbFace)
+    return false;
+
+  hb_font_t* font = hbFace->getScaledFont();
+  ASSERT(font);
+  hb_face_t* face = hb_font_get_face(font);
+  ASSERT(face);
+
+  return hb_ot_math_has_data(face);
+}
+
+int32_t FontPlatformData::mathConstant(MathConstant constant) const {
+  const HarfBuzzFace* hbFace = harfBuzzFace();
+  if (!hbFace)
+    return 0;
+
+  hb_font_t* font = hbFace->getScaledFont();
+  ASSERT(font);
+
+  return hb_ot_math_get_constant(font,
+                                 static_cast<hb_ot_math_constant_t>(constant));
+}
+
+int32_t FontPlatformData::mathItalicCorrection(Glyph glyph) const {
+  const HarfBuzzFace* hbFace = harfBuzzFace();
+  if (!hbFace)
+    return 0;
+
+  hb_font_t* font = hbFace->getScaledFont();
+  ASSERT(font);
+
+  return hb_ot_math_get_glyph_italics_correction(font, glyph);
+}
+
 }  // namespace blink

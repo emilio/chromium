@@ -162,6 +162,72 @@ class PLATFORM_EXPORT FontPlatformData {
   int paintTextFlags() const { return m_paintTextFlags; }
 #endif
 
+  bool hasMathData() const;
+
+  // These constants are defined in the OpenType MATH table.
+  // Their values match the indices in the MathContants subtable.
+  enum MathConstant {
+    ScriptPercentScaleDown = 0,
+    ScriptScriptPercentScaleDown = 1,
+    DelimitedSubFormulaMinHeight = 2,
+    DisplayOperatorMinHeight = 3,
+    MathLeading = 4,
+    AxisHeight = 5,
+    AccentBaseHeight = 6,
+    FlattenedAccentBaseHeight = 7,
+    SubscriptShiftDown = 8,
+    SubscriptTopMax = 9,
+    SubscriptBaselineDropMin = 10,
+    SuperscriptShiftUp = 11,
+    SuperscriptShiftUpCramped = 12,
+    SuperscriptBottomMin = 13,
+    SuperscriptBaselineDropMax = 14,
+    SubSuperscriptGapMin = 15,
+    SuperscriptBottomMaxWithSubscript = 16,
+    SpaceAfterScript = 17,
+    UpperLimitGapMin = 18,
+    UpperLimitBaselineRiseMin = 19,
+    LowerLimitGapMin = 20,
+    LowerLimitBaselineDropMin = 21,
+    StackTopShiftUp = 22,
+    StackTopDisplayStyleShiftUp = 23,
+    StackBottomShiftDown = 24,
+    StackBottomDisplayStyleShiftDown = 25,
+    StackGapMin = 26,
+    StackDisplayStyleGapMin = 27,
+    StretchStackTopShiftUp = 28,
+    StretchStackBottomShiftDown = 29,
+    StretchStackGapAboveMin = 30,
+    StretchStackGapBelowMin = 31,
+    FractionNumeratorShiftUp = 32,
+    FractionNumeratorDisplayStyleShiftUp = 33,
+    FractionDenominatorShiftDown = 34,
+    FractionDenominatorDisplayStyleShiftDown = 35,
+    FractionNumeratorGapMin = 36,
+    FractionNumDisplayStyleGapMin = 37,
+    FractionRuleThickness = 38,
+    FractionDenominatorGapMin = 39,
+    FractionDenomDisplayStyleGapMin = 40,
+    SkewedFractionHorizontalGap = 41,
+    SkewedFractionVerticalGap = 42,
+    OverbarVerticalGap = 43,
+    OverbarRuleThickness = 44,
+    OverbarExtraAscender = 45,
+    UnderbarVerticalGap = 46,
+    UnderbarRuleThickness = 47,
+    UnderbarExtraDescender = 48,
+    RadicalVerticalGap = 49,
+    RadicalDisplayStyleVerticalGap = 50,
+    RadicalRuleThickness = 51,
+    RadicalExtraAscender = 52,
+    RadicalKernBeforeDegree = 53,
+    RadicalKernAfterDegree = 54,
+    RadicalDegreeBottomRaisePercent = 55
+  };
+  int32_t mathConstant(MathConstant) const;
+
+  int32_t mathItalicCorrection(Glyph) const;
+
  private:
 #if OS(WIN)
   void querySystemForRenderStyle();
