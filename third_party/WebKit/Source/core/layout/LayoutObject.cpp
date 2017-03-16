@@ -1989,10 +1989,11 @@ void LayoutObject::propagateStyleToAnonymousChildren() {
   }
 }
 
+// TODO(emilio): Remove ComputedStyle arg
 NGLayoutInputNode* LayoutObject::toNGLayoutInputNode(
-    const ComputedStyle& containingBlockStyle) {
+    const ComputedStyle&) {
   if (isInline())
-    return new NGInlineNode(this, &containingBlockStyle);
+    return new NGInlineNode(this, toLayoutBlockFlow(containingBlock()));
   return new NGBlockNode(this);
 }
 

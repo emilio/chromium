@@ -5,7 +5,7 @@
 #ifndef LayoutNGMathMLBlock_h
 #define LayoutNGMathMLBlock_h
 
-#include "core/layout/LayoutBlock.h"
+#include "core/layout/LayoutBlockFlow.h"
 #include "core/mathml/MathMLElement.h"
 
 namespace blink {
@@ -13,7 +13,7 @@ namespace blink {
 class MathMLMathElement;
 class NGBlockNode;
 
-class LayoutNGMathMLBlock : public LayoutBlock {
+class LayoutNGMathMLBlock : public LayoutBlockFlow {
  public:
   explicit LayoutNGMathMLBlock(MathMLElement*);
   ~LayoutNGMathMLBlock() override = default;
