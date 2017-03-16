@@ -10,6 +10,8 @@ blink_core_sources("mathml") {
     "MathMLElement.h",
     "MathMLMathElement.cpp",
     "MathMLMathElement.h",
+    "MathMLSpaceElement.cpp",
+    "MathMLSpaceElement.h",
     "MathMLUnknownElement.cpp",
     "MathMLUnknownElement.h",
   ]
