@@ -3,10 +3,15 @@
     namespace: "MathML",
     namespaceURI: "http://www.w3.org/1998/Math/MathML",
     attrsNullNamespace: true,
+    export: "CORE_EXPORT",
   },
-
   data: [
     "definitionURL",
+    "depth",
     "encoding",
-  ],
+    "height",
+    "linethickness",
+    "width",
+    // TODO
+  ]
 }

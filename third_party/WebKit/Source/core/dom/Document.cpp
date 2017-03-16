@@ -45,6 +45,8 @@
 #include "core/HTMLElementFactory.h"
 #include "core/HTMLElementTypeHelpers.h"
 #include "core/HTMLNames.h"
+#include "core/MathMLElementFactory.h"
+#include "core/MathMLNames.h"
 #include "core/SVGElementFactory.h"
 #include "core/SVGNames.h"
 #include "core/XMLNSNames.h"
@@ -201,6 +203,7 @@
 #include "core/loader/NavigationScheduler.h"
 #include "core/loader/PrerendererClient.h"
 #include "core/loader/appcache/ApplicationCacheHost.h"
+#include "core/mathml/MathMLElement.h"
 #include "core/page/ChromeClient.h"
 #include "core/page/EventWithHitTestResults.h"
 #include "core/page/FocusController.h"
@@ -1236,6 +1239,9 @@ Element* Document::createElement(const QualifiedName& qName,
     e = HTMLElementFactory::createHTMLElement(qName.localName(), *this, flags);
   else if (qName.namespaceURI() == SVGNames::svgNamespaceURI)
     e = SVGElementFactory::createSVGElement(qName.localName(), *this, flags);
+  else if (qName.namespaceURI() == MathMLNames::mathmlNamespaceURI)
+    e = MathMLElementFactory::createMathMLElement(qName.localName(), *this,
+                                                  flags);
 
   if (e)
     m_sawElementsInKnownNamespaces = true;

@@ -183,8 +183,10 @@ component("core") {
     "//third_party/WebKit/Source/core/input",
     "//third_party/WebKit/Source/core/inspector",
     "//third_party/WebKit/Source/core/layout",
+    "//third_party/WebKit/Source/core/layout/mathml",
     "//third_party/WebKit/Source/core/layout/svg",
     "//third_party/WebKit/Source/core/loader",
+    "//third_party/WebKit/Source/core/mathml",
     "//third_party/WebKit/Source/core/mojo",
     "//third_party/WebKit/Source/core/offscreencanvas",
     "//third_party/WebKit/Source/core/origin_trials",
@@ -657,6 +659,33 @@ process_in_files("make_core_generated_html_element_type_helpers") {
   ]
 }
 
+process_in_files("make_core_generated_math_ml_names") {
+  script = "../build/scripts/make_element_factory.py"
+
+  in_files = [
+    "mathml/MathMLTagNames.json5",
+    "mathml/MathMLAttributeNames.json5",
+  ]
+  other_inputs = make_element_factory_files
+  outputs = [
+    "$blink_core_output_dir/MathMLElementFactory.cpp",
+    "$blink_core_output_dir/MathMLElementFactory.h",
+    "$blink_core_output_dir/MathMLNames.cpp",
+    "$blink_core_output_dir/MathMLNames.h",
+  ]
+}
+
+process_in_files("make_core_generated_math_ml_element_type_helpers") {
+  script = "../build/scripts/make_element_type_helpers.py"
+
+  in_files = [ "mathml/MathMLTagNames.json5" ]
+  other_inputs = make_element_type_helpers_files
+  outputs = [
+    "$blink_core_output_dir/MathMLElementTypeHelpers.cpp",
+    "$blink_core_output_dir/MathMLElementTypeHelpers.h",
+  ]
+}
+
 process_in_files("make_core_generated_svg_names") {
   script = "../build/scripts/make_element_factory.py"
 
@@ -765,17 +794,6 @@ make_names("make_core_generated_input_mode_names") {
 }
 
 # make_qualified_names ---------------------------------------------------------
-
-make_qualified_names("make_core_generated_math_ml_names") {
-  in_files = [
-    "html/parser/MathMLTagNames.json5",
-    "html/parser/MathMLAttributeNames.json5",
-  ]
-  outputs = [
-    "$blink_core_output_dir/MathMLNames.cpp",
-    "$blink_core_output_dir/MathMLNames.h",
-  ]
-}
 
 make_qualified_names("make_core_generated_xlink_names") {
   in_files = [ "svg/xlinkattrs.json5" ]
@@ -994,6 +1012,7 @@ targets_generating_sources = [
   ":make_core_generated_input_mode_names",
   ":make_core_generated_input_type_names",
   ":make_core_generated_math_ml_names",
+  ":make_core_generated_math_ml_element_type_helpers",
   ":make_core_generated_media_feature_names",
   ":make_core_generated_media_type_names",
   ":make_core_generated_origin_trials",
