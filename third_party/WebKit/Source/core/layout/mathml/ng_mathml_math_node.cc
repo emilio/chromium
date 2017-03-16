@@ -91,6 +91,7 @@ RefPtr<NGLayoutResult> NGMathMLMathNode::Layout(
           ? max_row_inline_size + border_padding.inline_end
           : available_size.inline_size;
 
+  // TODO(emilio): Center children when in block mode.
   RefPtr<NGLayoutResult> result =
       builder.SetInlineSize(final_inline_size)
           .SetBlockSize(offset.block_offset + max_row_block_size + border_padding.block_end)
