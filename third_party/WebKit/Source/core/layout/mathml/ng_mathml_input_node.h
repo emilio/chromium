@@ -14,9 +14,7 @@ namespace blink {
 class NGMathMLInputNode : public NGBlockNode {
  public:
   explicit NGMathMLInputNode(LayoutObject* flow) : NGBlockNode(flow) {}
-
-  RefPtr<NGLayoutResult> Layout(NGConstraintSpace* constraint_space,
-                                NGBreakToken* break_token) override;
+  RefPtr<NGLayoutResult> Layout(NGConstraintSpace*, NGBreakToken*) override;
 
  protected:
   LayoutUnit toUserUnits(const MathMLElement::Length&,
@@ -38,7 +36,8 @@ class NGMathMLInputNode : public NGBlockNode {
     return hasMathData()
                ? mathConstant(FontPlatformData::AxisHeight)
                : LayoutUnit(
-                     Style().font().primaryFont()->getFontMetrics().xHeight() /
+                     Style().font().primaryFont()->getFontMetrics().xHeight()
+                     /
                      2);
   }
 };

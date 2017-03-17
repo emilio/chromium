@@ -15,10 +15,6 @@ LayoutNGMathMLMath::LayoutNGMathMLMath(MathMLMathElement* element)
   DCHECK(element);
 }
 
-bool LayoutNGMathMLMath::isOfType(LayoutObjectType type) const {
-  return type == LayoutObjectMathMLMath || LayoutNGMathMLBlock::isOfType(type);
-}
-
 NGMathMLMathNode* LayoutNGMathMLMath::toNGLayoutInputNode(
     const ComputedStyle& style) {
   return new NGMathMLMathNode(this);

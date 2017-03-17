@@ -71,8 +71,6 @@ RefPtr<NGLayoutResult> NGMathMLFractionNode::Layout(
   RefPtr<NGLayoutResult> denominator_layout_result =
       denominator->Layout(denominator_constraint_space.get());
 
-  // TODO(emilio): We need to change the horizontal offset depending on the
-  // numalign and denalign attributes. Assume left for now.
   NGLogicalOffset numerator_offset;
   NGLogicalOffset denominator_offset;
 

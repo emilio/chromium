@@ -24,12 +24,7 @@ class LayoutNGMathMLMath final : public LayoutNGMathMLBlock {
 
  private:
   NGMathMLMathNode* toNGLayoutInputNode(const ComputedStyle&) override;
-  bool isOfType(LayoutObjectType) const override;
-
-  LayoutObjectChildList m_children;
 };
-
-DEFINE_LAYOUT_OBJECT_TYPE_CASTS(LayoutNGMathMLMath, isMathMLMath());
 
 }  // namespace blink
 
